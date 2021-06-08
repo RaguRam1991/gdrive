@@ -4,7 +4,8 @@ import {
     View,
     Text,
     TouchableOpacity,
-    Image
+    Image,
+    ToastAndroid
 } from 'react-native';
 
 import { BottomSheet } from 'react-native-elements';
@@ -138,9 +139,9 @@ export const AddNew = () => {
             position: 'absolute',
         },
         close: {
-            margin: 10,
-            marginBottom: 0,
-            alignSelf: 'flex-end',
+            //margin: 10,
+            //marginBottom: 0,
+            //alignSelf: 'flex-end',
             padding: 5,
         },
         bsheet: {
@@ -201,13 +202,18 @@ export const AddNew = () => {
                 isVisible={isVisible}
                 containerStyle={{ backgroundColor: 'rgba(0.5, 0.25, 0, 0.2)' }}>
                 <View style={styles.bsheet}>
-                    <TouchableOpacity
-                        style={styles.close}
-                        onPress={() => {
-                            setIsVisible(false);
-                        }}>
-                        <Text style={{ fontSize: 20 }}> x </Text>
-                    </TouchableOpacity>
+                    <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", margin: 10 }}>
+                        <View />
+                        <Text style={{ fontSize: 20 }}>Create New</Text>
+                        <TouchableOpacity
+                            style={styles.close}
+                            onPress={() => {
+                                setIsVisible(false);
+                            }}>
+                            <Text style={{ fontSize: 20 }}> x </Text>
+                        </TouchableOpacity>
+                    </View>
+
                     <View style={styles.uitems}>
                         {list2.map((l, i) => (
                             <TouchableOpacity
@@ -226,3 +232,34 @@ export const AddNew = () => {
         </>
     );
 };
+
+export const ViewType = () => {
+    const styles = StyleSheet.create({
+      container: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 10,
+      },
+    });
+  
+    const showToast = () => {
+        ToastAndroid.show("No Action written !", ToastAndroid.SHORT);
+      };
+
+    return (
+      <View style={styles.container}>
+        <Text> Name ↑ </Text>
+        <TouchableOpacity onPress={showToast}>
+          <Image
+            style={{ height: 30, width: 30 }}
+            source={{
+              uri:
+                'https://cdn0.iconfinder.com/data/icons/rounded-basics/24/svg-rounded_grid-512.png',
+            }}
+          />
+        </TouchableOpacity>
+  
+      </View>
+    );
+  };

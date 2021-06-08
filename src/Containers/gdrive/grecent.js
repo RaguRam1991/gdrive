@@ -68,37 +68,6 @@ const GRecent = () => {
 
 export default GRecent;
 
-/*var rec_files = [
-  {
-    fname: 'RN_Text_Book',
-    ftype: 'xlsx',
-    prevu:
-      'https://mspoweruser.com/wp-content/uploads/2019/11/Excel-Office-Scripting.jpg',
-    lasto: 'this week',
-  },
-  {
-    fname: '20210401 profile',
-    ftype: 'pdf',
-    prevu:
-      'https://cdn-0.idownloadblog.com/wp-content/uploads/2016/07/Split-PDF-Document-PDF-splitting-guide-6.png',
-    lasto: 'this month',
-  },
-  {
-    fname: 'untitled 2',
-    ftype: 'txt',
-    prevu:
-      'https://ibruk.files.wordpress.com/2014/06/generating-sample-text-in-word-4.png',
-    lasto: 'yesterday',
-  },
-  {
-    fname: '4k abstract wall green',
-    ftype: 'jpg',
-    prevu:
-      'https://i.pinimg.com/originals/de/d8/43/ded84385480090c3464352f152dbc0c8.jpg',
-    lasto: 'today 3.30 pm',
-  },
-];*/
-
 /*  
  icon,name,option
  preview

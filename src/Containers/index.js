@@ -1,4 +1,4 @@
-export { default as IndexExampleContainer } from './Example/Index';
+//export { default as IndexExampleContainer } from './Example/Index';
 export { default as IndexStartupContainer } from './Startup/Index';
 export { default as GHome } from './gdrive/grecent';
 export { default as GStarred } from './gdrive/gstarred';

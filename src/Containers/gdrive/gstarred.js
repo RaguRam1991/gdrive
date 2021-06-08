@@ -21,10 +21,9 @@ import {
 
 import GFOptions from './gfoptions';
 import { fyles } from './data';
-import { FItem, AddNew } from './comps';
+import { FItem, AddNew,ViewType } from './comps';
 
 import { BottomSheet } from 'react-native-elements';
-//import { FAB, BottomSheet, ListItem } from 'react-native-elements';
 
 const GStarred = () => {
   const [isVisible, setIsVisible] = React.useState(false);
@@ -54,73 +53,6 @@ const GStarred = () => {
 };
 
 export default GStarred;
-
-const ViewType = () => {
-  const styles = StyleSheet.create({
-    container: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      padding: 10,
-    },
-  });
-
-  return (
-    <View style={styles.container}>
-      <Text> Name ↑ </Text>
-      <Image
-        style={{ height: 30, width: 30 }}
-        source={{
-          uri:
-            'https://cdn0.iconfinder.com/data/icons/rounded-basics/24/svg-rounded_grid-512.png',
-        }}
-      />
-    </View>
-  );
-};
-
-/*  
-  icon,name,option  
-  last modified
-  */
-
-/*const FItem = ({ fyle, toggleBSheet }) => {
-  const styles = StyleSheet.create({
-    container: {
-      marginVertical: 10,
-      width: '100%',
-      paddingVertical: 10,
-      paddingHorizontal:20,
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      flexDirection: 'row',
-    },
-  });
-
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity style={{ alignItems: "center", flexDirection: 'row' }}>
-        <Image
-          style={{ height: 20, width: 20 }}
-          source={{ uri: icons[fyle.ftype], }}
-        />
-        <View style={{ marginLeft: 15 }}>
-          <Text style={{ color: 'black' }}>{fyle.fname}</Text>
-          <Text style={{ marginTop: 5, fontSize: 12, color: 'grey' }}>
-            Modified {fyle.modi}
-          </Text>
-        </View>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={toggleBSheet}>
-        <Image
-          style={{ marginHorizontal: 5, height: 15, width: 15 }}
-          source={require('./more-icon.png')}
-        />
-      </TouchableOpacity>
-    </View>
-  );
-};*/
 
 const FList = ({ toggleBSheet }) => {
   const styles = StyleSheet.create({

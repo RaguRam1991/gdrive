@@ -22,7 +22,7 @@ import {
 import icons from './icons';
 import GFOptions from './gfoptions';
 import {fyles2} from './data';
-import {FItem2,AddNew} from './comps';
+import {FItem2,AddNew,ViewType} from './comps';
 
 import { BottomSheet } from 'react-native-elements';
 
@@ -56,30 +56,6 @@ const GShared = () => {
 };
 
 export default GShared;
-
-const ViewType = () => {
-    const styles = StyleSheet.create({
-        container: {
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: 10,
-        },
-    });
-
-    return (
-        <View style={styles.container}>
-            <Text> Name ↑ </Text>
-            <Image
-                style={{ height: 30, width: 30 }}
-                source={{
-                    uri:
-                        'https://cdn0.iconfinder.com/data/icons/rounded-basics/24/svg-rounded_grid-512.png',
-                }}
-            />
-        </View>
-    );
-};
 
 /*  
   share person,icon,name,option  

@@ -8,7 +8,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SearchBar } from 'react-native-elements';
 
 import {
-  IndexExampleContainer,
   GHome,
   GStarred,
   GShared,
@@ -66,11 +65,11 @@ const MyTabs = (props2) => {
           onAcPress={() => { navigation.navigate('account') }}
           onSearchPress={() => { navigation.navigate('search') }}
         />),
-        headerStyle: {          
-          backgroundColor: 'transparent',          
+        headerStyle: {
+          backgroundColor: 'transparent',
           //height:"20%",
         },
-        headerTitleStyle: {          
+        headerTitleStyle: {
           //height:"20%"
         },
       })}
@@ -79,14 +78,6 @@ const MyTabs = (props2) => {
       <Stack.Screen name="search" component={GSearch} options={{ headerShown: false }} />
       <Stack.Screen name="account" component={GAccount} options={{ headerShown: false }} />
     </Stack.Navigator>
-  );
-}
-
-const Drawer2 = ({ navigation }) => {
-  return (
-    <View>
-      <Text>Drawer Test</Text>
-    </View>
   );
 }
 

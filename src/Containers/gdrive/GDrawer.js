@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
+import {StyleSheet,ToastAndroid, View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 
 const GDrawer = () => {
   const img =
@@ -100,8 +100,12 @@ const OItem = ({opt}) => {
     },
   });
 
+  const showToast = () => {
+    ToastAndroid.show("No Action written !", ToastAndroid.SHORT);
+  };
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity onPress={showToast} style={styles.container}>
       <Image style={{height: 20, width: 20}} source={{uri: opt.icon}} />
       <Text style={{marginLeft: 15, color: 'black'}}>{opt.name}</Text>
     </TouchableOpacity>
