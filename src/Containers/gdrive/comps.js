@@ -235,31 +235,35 @@ export const AddNew = () => {
 
 export const ViewType = () => {
     const styles = StyleSheet.create({
-      container: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: 10,
-      },
+        container: {
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: 10,
+        },
     });
-  
+
     const showToast = () => {
         ToastAndroid.show("No Action written !", ToastAndroid.SHORT);
-      };
+    };
 
     return (
-      <View style={styles.container}>
-        <Text> Name ↑ </Text>
-        <TouchableOpacity onPress={showToast}>
-          <Image
-            style={{ height: 30, width: 30 }}
-            source={{
-              uri:
-                'https://cdn0.iconfinder.com/data/icons/rounded-basics/24/svg-rounded_grid-512.png',
-            }}
-          />
-        </TouchableOpacity>
-  
-      </View>
+        <View style={styles.container}>
+            <Text> Name ↑ </Text>
+            <TouchableOpacity onPress={showToast}>
+                <Image
+                    style={{ height: 30, width: 30 }}
+                    source={{
+                        uri:
+                            'https://cdn0.iconfinder.com/data/icons/rounded-basics/24/svg-rounded_grid-512.png',
+                    }}
+                />
+            </TouchableOpacity>
+
+        </View>
     );
-  };
+};
+
+export function showToast(msg='') {
+    ToastAndroid.show(msg, ToastAndroid.SHORT);
+};

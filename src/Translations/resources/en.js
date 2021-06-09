@@ -1,5 +1,5 @@
 export default {
-  welcome: 'Welcome to React Native GDRIVE by TheCodingMachine',
+  welcome: 'Welcome to GDRIVE, an UI clone of Google Drive',
   actions: {
     continue: 'Continue',
   },

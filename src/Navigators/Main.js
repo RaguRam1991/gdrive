@@ -5,9 +5,9 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { SearchBar } from 'react-native-elements';
 
 import {
+  //IndexExampleContainer,
   GHome,
   GStarred,
   GShared,
@@ -29,15 +29,7 @@ const MyTabItems = () => {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName = focused ? tabs[route.name] : tabs[route.name] + "-outline";
-
-          /*if (route.name === 'Home') {
-            iconName = focused
-              ? 'ios-information-circle'
-              : 'ios-information-circle-outline';
-          } else if (route.name === 'Settings') {
-            iconName = focused ? 'ios-list-box' : 'ios-list';
-          }*/
+          let iconName = focused ? tabs[route.name] : tabs[route.name] + "-outline";       
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -98,7 +90,7 @@ export default MainNavigator
 
 const SearchBar1 = (props) => {
   const icon_menu = "https://pics.freeicons.io/uploads/icons/png/15211315791553239378-512.png";
-  const icon_profile = "https://static.thenounproject.com/png/1743560-200.png";
+  const icon_profile = "https://www.seekpng.com/png/detail/115-1150053_avatar-png-transparent-png-royalty-free-default-user.png";
 
   const [search, setSearch] = React.useState('');
 

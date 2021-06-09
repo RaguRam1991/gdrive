@@ -17,6 +17,8 @@ import {
   FlatList,
 } from 'react-native';
 
+import {showToast} from './comps';
+
 const GAccounts = () => {
   const styles = StyleSheet.create({
     container: {
@@ -31,6 +33,10 @@ const GAccounts = () => {
       backgroundColor: 'black',
     },
   });
+
+  React.useEffect(() => {
+    showToast("No Action written on this page!");
+  },[]);
 
   return (
     <View style={styles.container}>

@@ -8,7 +8,7 @@ const Brand = ({ height, width, mode }) => {
 
   return (
     <View style={{ height, width }}>
-      <Image style={Layout.fullSize} source={Images.logo} resizeMode={mode} />
+      <Image style={Layout.fullSize} source={Images.logo2} resizeMode={mode} />
     </View>
   )
 }
