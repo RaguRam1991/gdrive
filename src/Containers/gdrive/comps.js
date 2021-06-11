@@ -35,7 +35,7 @@ export const FItem = ({ fyle, toggleBSheet }) => {
             <TouchableOpacity style={{ alignItems: "center", flexDirection: 'row' }}>
                 <Image
                     style={{ height: 20, width: 20 }}
-                    source={{ uri: icons[fyle.ftype], }}
+                    source={{ uri: icons[fyle.ftype] || icons.file, }}
                 />
                 <View style={{ marginLeft: 15 }}>
                     <Text style={{ color: 'black' }}>{fyle.fname}</Text>

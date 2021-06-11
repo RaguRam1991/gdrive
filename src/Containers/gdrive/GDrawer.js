@@ -1,5 +1,21 @@
 import React from 'react';
-import {StyleSheet,ToastAndroid, View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  ToastAndroid, 
+  View, 
+  Text,
+  FlatList, 
+  Image,
+  TouchableOpacity,   
+  Switch
+} from 'react-native';
+
+import { useDispatch, useSelector } from 'react-redux'
+
+import { useTheme } from '@/Theme'
+import ChangeTheme from '@/Store/Theme/ChangeTheme'
+
+const dispatch = useDispatch()
 
 const GDrawer = () => {
   const img =
@@ -26,9 +42,10 @@ const GDrawer = () => {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.img} source={{uri: img}} />
+      <Image style={styles.img} source={{ uri: img }} />
       <View style={styles.sep} />
       <Options />
+      {/* <DarkMode /> */}
     </View>
   );
 };
@@ -54,7 +71,7 @@ const options_data = [
   {
     name: 'Notifications',
     icon:
-      'https://www.seekpng.com/png/detail/130-1304578_notification-comments-notification-icon-svg.png',
+      'https://freeiconshop.com/wp-content/uploads/edd/notification-outline.png',
   },
   {
     name: 'Backups',
@@ -72,12 +89,12 @@ const options_data = [
 ];
 
 const Options = () => {
-  const renderItem = ({item}) => {
+  const renderItem = ({ item }) => {
     return <OItem opt={item} />;
   };
 
   return (
-    <View style={{paddingLeft:10}}>
+    <View style={{ paddingLeft: 10 }}>
       <FlatList
         data={options_data}
         renderItem={renderItem}
@@ -88,7 +105,7 @@ const Options = () => {
   );
 };
 
-const OItem = ({opt}) => {
+const OItem = ({ opt }) => {
   const styles = StyleSheet.create({
     container: {
       marginVertical: 10,
@@ -106,8 +123,8 @@ const OItem = ({opt}) => {
 
   return (
     <TouchableOpacity onPress={showToast} style={styles.container}>
-      <Image style={{height: 20, width: 20}} source={{uri: opt.icon}} />
-      <Text style={{marginLeft: 15, color: 'black'}}>{opt.name}</Text>
+      <Image style={{ height: 20, width: 20 }} source={{ uri: opt.icon }} />
+      <Text style={{ marginLeft: 15, color: 'black' }}>{opt.name}</Text>
     </TouchableOpacity>
   );
 };
@@ -133,11 +150,49 @@ const Storage = () => {
 
   return (
     <TouchableOpacity style={styles.container}>
-      <Image style={{height: 20, width: 20}} source={{uri: img}} />
-      <View style={{marginLeft: 15}}>
-        <Text style={{color: 'black'}}>Storage</Text>
-        <Text style={{color: 'grey'}}>{usage}</Text>
+      <Image style={{ height: 20, width: 20 }} source={{ uri: img }} />
+      <View style={{ marginLeft: 15 }}>
+        <Text style={{ color: 'black' }}>Storage</Text>
+        <Text style={{ color: 'grey' }}>{usage}</Text>
       </View>
     </TouchableOpacity>
   );
 };
+
+const DarkMode = () => {
+  const { Common, Fonts, Gutters, Layout } = useTheme()
+  const [isEnabled, setIsEnabled] = React.useState(false);
+  
+  const toggleSwitch = () => {
+    setIsEnabled(previousState => !previousState);
+    changeTheme({ darkMode: !isEnabled });
+  }
+
+  const styles = StyleSheet.create({
+    container: {
+      marginVertical: 10,
+      width: '100%',
+      padding: 10,
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      flexDirection: 'row',
+    },
+  });
+
+  const changeTheme = ({ theme, darkMode }) => {
+    dispatch(ChangeTheme.action({ theme, darkMode }))
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text style={{ color: 'black' }}>DarkMode</Text>
+      <Switch
+        trackColor={{ false: "#767577", true: "#81b0ff" }}
+        thumbColor={isEnabled ? "royalblue" : "#f4f3f4"}
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={toggleSwitch}
+        value={isEnabled}
+      />
+    </View>
+  );
+}

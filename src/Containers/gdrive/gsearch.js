@@ -21,6 +21,9 @@ import {
 
 import {SearchBar} from 'react-native-elements';
 import icons from './icons';
+import { BottomSheet } from 'react-native-elements';
+import GFOptions from './gfoptions';
+import { FItem} from './comps';
 
 var results = [
   {
@@ -51,6 +54,8 @@ var results = [
 ];
 
 const GSearch = () => {
+  const [isVisible, setIsVisible] = React.useState(false);
+  
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -60,10 +65,19 @@ const GSearch = () => {
     },
   });
 
+  const toggleBSheet = () => {
+    setIsVisible(!isVisible);
+  };
+
   return (
     <View style={styles.container}>
       <SrchBar />
-      <SFList />
+      <SFList toggleBSheet={toggleBSheet} />
+      <BottomSheet
+        isVisible={isVisible}
+        containerStyle={{ backgroundColor: 'silver' }}>
+        <GFOptions onClose={toggleBSheet} />
+      </BottomSheet>
     </View>
   );
 };
@@ -93,13 +107,19 @@ const SrchBar = () => {
   );
 };
 
-const SFList = () => {
+const SFList = ({toggleBSheet}) => {
   const styles = StyleSheet.create({
     container: {},
   });
 
+  /*
   const renderItem = ({item}) => {
     return <FItem fyle={item} />;
+  };
+  */
+
+  const renderItem = ({ item }) => {
+    return <FItem toggleBSheet={toggleBSheet} fyle={item} />;
   };
 
   return (
@@ -108,49 +128,5 @@ const SFList = () => {
       renderItem={renderItem}
       keyExtractor={(item, index) => '' + index}
     />
-  );
-};
-
-/*  
-   icon,name,option  
-   last modified
-   */
-const FItem = ({fyle}) => {
-  const fimg =
-    'https://i.pinimg.com/originals/2b/a7/7d/2ba77de4c93153606635928e5686cc44.png';
-
-  const styles = StyleSheet.create({
-    container: {
-      marginVertical: 10,
-      width: '100%',
-      padding: 10,
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      flexDirection: 'row',
-    },
-  });
-
-  return (
-    <View style={styles.container}>
-      <View style={{flexDirection: 'row',alignItems: 'center'}}>
-        <Image
-          style={{height: 20, width: 20}}
-          source={{uri: icons[fyle.ftype] || fimg}}
-        />
-        <View style={{marginLeft: 15}}>
-          <Text style={{color: 'black'}}>{fyle.fname}</Text>
-          <Text style={{marginTop: 5, fontSize: 12, color: 'grey'}}>
-            Modified {fyle.modi}
-          </Text>
-        </View>
-      </View>
-
-      <TouchableOpacity>
-        <Image
-          style={{height: 15, width: 15}}
-          source={require('./more-icon.png')}
-        />
-      </TouchableOpacity>
-    </View>
   );
 };
