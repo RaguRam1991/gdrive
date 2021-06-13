@@ -56,13 +56,14 @@ const MyTabs = (props2) => {
           onMenuPress={() => props2.navigation.toggleDrawer()}
           onAcPress={() => { navigation.navigate('account') }}
           onSearchPress={() => { navigation.navigate('search') }}
-        />),
+        />),        
         headerStyle: {
           backgroundColor: 'transparent',
-          //height:"20%",
-        },
+          height:70,
+        },        
         headerTitleStyle: {
-          //height:"20%"
+          //height:"20%",
+          //backgroundColor: 'skyblue',
         },
       })}
     >
@@ -101,11 +102,11 @@ const SearchBar1 = (props) => {
       backgroundColor: 'transparent'
     },
     bar: {
-      marginVertical: 20,
+      marginVertical: 10,
       flexDirection: "row",
       alignItems: "center",
       backgroundColor: 'snow',
-      padding: 10,
+      padding: 5,
       borderRadius: 5,
       borderWidth: 0.5
     },
@@ -119,6 +120,25 @@ const SearchBar1 = (props) => {
     setSearch(srch);
   };
 
+  return (
+    
+      <View style={styles.bar}>
+        <TouchableOpacity onPress={props.onMenuPress}>
+          <Image source={{ uri: icon_menu }} style={styles.img} />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={props.onSearchPress} style={{ flex: 1, marginLeft: 10 }} >
+          <Text style={{}}>Search in Drive</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={props.onAcPress}>
+          <Image source={{ uri: icon_profile }} style={styles.img} />
+        </TouchableOpacity>
+      </View>
+    
+  );
+
+  /*
   return (
     <View style={styles.container}>
       <View style={styles.bar}>
@@ -135,5 +155,5 @@ const SearchBar1 = (props) => {
         </TouchableOpacity>
       </View>
     </View>
-  );
+  );*/
 };

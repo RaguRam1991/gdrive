@@ -12,16 +12,12 @@ listing starred files
 import React from 'react';
 import {
   StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  Image
+  View,  
 } from 'react-native';
 
 import GFOptions from './gfoptions';
 import { fyles } from './data';
-import { FItem, AddNew,ViewType } from './comps';
+import {  AddNew,ViewType,FList } from './comps';
 
 import { BottomSheet } from 'react-native-elements';
 
@@ -41,7 +37,7 @@ const GStarred = () => {
   return (
     <View style={styles.container}>
       <ViewType />
-      <FList toggleBSheet={toggleBSheet} />
+      <FList data={fyles} toggleBSheet={toggleBSheet} />
       <AddNew />
       <BottomSheet
         isVisible={isVisible}
@@ -53,31 +49,3 @@ const GStarred = () => {
 };
 
 export default GStarred;
-
-const FList = ({ toggleBSheet }) => {
-  const styles = StyleSheet.create({
-    container: {
-
-    },
-    sep: {
-      alignSelf: 'center',
-      height: 1,
-      width: '90%',
-      backgroundColor: 'silver',
-      borderRadius: 0.5,
-    },
-  });
-
-  const renderItem = ({ item }) => {
-    return <FItem toggleBSheet={toggleBSheet} fyle={item} />;
-  };
-
-  return (
-    <FlatList
-      contentContainerStyle={styles.container}
-      data={fyles}
-      renderItem={renderItem}
-      keyExtractor={(item, index) => '' + index}
-    />
-  );
-};

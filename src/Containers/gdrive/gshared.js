@@ -12,14 +12,10 @@ listing starred files
 import React, { useState } from 'react';
 import {
     StyleSheet,
-    View,
-    Text,
-    TouchableOpacity,
-    FlatList,
-    Image
+    View,    
+    FlatList,    
 } from 'react-native';
 
-import icons from './icons';
 import GFOptions from './gfoptions';
 import {fyles2} from './data';
 import {FItem2,AddNew,ViewType} from './comps';
@@ -56,56 +52,6 @@ const GShared = () => {
 };
 
 export default GShared;
-
-/*  
-  share person,icon,name,option  
-  shared time
-  */
-
-/*const FItem = ({ fyle, toggleBSheet }) => {
-    const styles = StyleSheet.create({
-        container: {
-            marginVertical: 10,
-            width: '100%',
-            paddingVertical: 10,
-            paddingHorizontal: 20,
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-        },
-    });
-
-    return (
-        <View style={styles.container}>
-            <TouchableOpacity style={{ alignItems: "center", flexDirection: 'row' }}>
-                <Image
-                    style={{ borderRadius: 15, height: 30, width: 30 }}
-                    source={{ uri: fyle.sperson }}
-                />
-                <Image
-                    style={{ height: 25, width: 25 }}
-                    source={{ uri: icons[fyle.ftype], }}
-                />
-                <View style={{ marginLeft: 15 }}>
-                    <Text style={{ color: 'black' }}>{fyle.fname}</Text>
-                    <View style={{ marginTop: 5, alignItems: "center", flexDirection: 'row' }}>
-                        <Ionicons name={'people'} size={15} color={'grey'} />
-                        <Text style={{ marginLeft: 5, fontSize: 12, color: 'grey' }}>
-                            Shared {fyle.modi}
-                        </Text>
-                    </View>
-                </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={toggleBSheet}>
-                <Image
-                    style={{ marginHorizontal: 0, height: 15, width: 15 }}
-                    source={require('./more-icon.png')}
-                />
-            </TouchableOpacity>
-        </View>
-    );
-};*/
 
 const FList = ({ toggleBSheet }) => {
     const styles = StyleSheet.create({

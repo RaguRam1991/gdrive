@@ -4,26 +4,16 @@ listing search files
  show name and last modified
  */
 
-/**
- file item
- file icon,name,modified,options
- */
-
 import React, {useState} from 'react';
 import {
   StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  Image,
+  View,  
 } from 'react-native';
 
 import {SearchBar} from 'react-native-elements';
-import icons from './icons';
 import { BottomSheet } from 'react-native-elements';
 import GFOptions from './gfoptions';
-import { FItem} from './comps';
+import { FList} from './comps';
 
 var results = [
   {
@@ -58,10 +48,7 @@ const GSearch = () => {
   
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      //backgroundColor:"black",
-      //alignItems: 'center',
-      //justifyContent: 'center',
+      flex: 1,      
     },
   });
 
@@ -71,8 +58,8 @@ const GSearch = () => {
 
   return (
     <View style={styles.container}>
-      <SrchBar />
-      <SFList toggleBSheet={toggleBSheet} />
+      <SrchBar />      
+      <FList data={results} toggleBSheet={toggleBSheet} />
       <BottomSheet
         isVisible={isVisible}
         containerStyle={{ backgroundColor: 'silver' }}>
@@ -103,30 +90,6 @@ const SrchBar = () => {
       placeholder="Search in Drive..."
       onChangeText={updateSearch}
       value={search}
-    />
-  );
-};
-
-const SFList = ({toggleBSheet}) => {
-  const styles = StyleSheet.create({
-    container: {},
-  });
-
-  /*
-  const renderItem = ({item}) => {
-    return <FItem fyle={item} />;
-  };
-  */
-
-  const renderItem = ({ item }) => {
-    return <FItem toggleBSheet={toggleBSheet} fyle={item} />;
-  };
-
-  return (
-    <FlatList
-      data={results}
-      renderItem={renderItem}
-      keyExtractor={(item, index) => '' + index}
     />
   );
 };

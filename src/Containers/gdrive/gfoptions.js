@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   StyleSheet,
   View,
@@ -8,8 +9,6 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-
-import { BottomSheet } from 'react-native-elements';
 
 import icons from './icons';
 

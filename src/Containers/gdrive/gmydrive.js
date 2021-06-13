@@ -12,20 +12,14 @@ listing files
 import React, { useState } from 'react';
 import {
   StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  Image,
-  BackHandler,
+  View,    
 } from 'react-native';
 
-import icons from './icons';
 import GFOptions from './gfoptions';
 import { fyles } from './data';
-import { FItem,AddNew,ViewType } from './comps';
+import { AddNew,ViewType,FList } from './comps';
 
-import { FAB, BottomSheet, ListItem } from 'react-native-elements';
+import {  BottomSheet } from 'react-native-elements';
 
 const GMyDrive = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -46,7 +40,7 @@ const GMyDrive = () => {
   return (
     <View style={styles.container}>
       <ViewType />
-      <FList toggleBSheet={toggleBSheet} />
+      <FList data={fyles} toggleBSheet={toggleBSheet} />
       <BottomSheet
         isVisible={isVisible}
         containerStyle={{
@@ -60,31 +54,3 @@ const GMyDrive = () => {
 };
 
 export default GMyDrive;
-
-const FList = ({ toggleBSheet }) => {
-  const styles = StyleSheet.create({
-    container: {
-      //backgroundColor: 'yellow',
-    },
-    sep: {
-      alignSelf: 'center',
-      height: 1,
-      width: '90%',
-      backgroundColor: 'silver',
-      borderRadius: 0.5,
-    },
-  });
-
-  const renderItem = ({ item }) => {
-    return <FItem toggleBSheet={toggleBSheet} fyle={item} />;
-  };
-
-  return (
-    <FlatList
-      contentContainerStyle={styles.container}
-      data={fyles}
-      renderItem={renderItem}
-      keyExtractor={(item, index) => '' + index}
-    />
-  );
-};

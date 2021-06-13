@@ -5,7 +5,8 @@ import {
     Text,
     TouchableOpacity,
     Image,
-    ToastAndroid
+    ToastAndroid,
+    FlatList
 } from 'react-native';
 
 import { BottomSheet } from 'react-native-elements';
@@ -267,3 +268,31 @@ export const ViewType = () => {
 export function showToast(msg='') {
     ToastAndroid.show(msg, ToastAndroid.SHORT);
 };
+
+export const FList = (props) => {
+    const styles = StyleSheet.create({
+      container: {
+  
+      },
+      sep: {
+        alignSelf: 'center',
+        height: 1,
+        width: '90%',
+        backgroundColor: 'silver',
+        borderRadius: 0.5,
+      },
+    });
+  
+    const renderItem = ({ item }) => {
+      return <FItem toggleBSheet={props.toggleBSheet} fyle={item} />;
+    };
+  
+    return (
+      <FlatList
+        contentContainerStyle={styles.container}
+        data={props.data}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => '' + index}
+      />
+    );
+  };

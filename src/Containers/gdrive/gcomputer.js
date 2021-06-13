@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
 const GComputer = () => {
   const styles = StyleSheet.create({
@@ -15,18 +15,18 @@ const GComputer = () => {
   });
 
   const imgsync = 'https://image.flaticon.com/icons/png/512/59/59884.png';
+  const info = "To Sync folders on your computer with Google Drive, install Backup and Sync on your computer.";
 
   return (
     <View style={styles.container}>
-      <Image source={{uri: imgsync}} style={styles.img} />
-      <View style={{alignItems: 'center', width: '80%'}}>
-        <Text style={{fontSize: 18}}>No Computers Syncing</Text>
-        <Text style={{marginTop: 10,marginBottom:3, textAlign:"center"}}>
-          To Sync folders on your computer with Google Drive, install Backup and
-          Sync on your computer.
+      <Image source={{ uri: imgsync }} style={styles.img} />
+      <View style={{ alignItems: 'center', width: '80%' }}>
+        <Text style={{ fontSize: 18 }}>No Computers Syncing</Text>
+        <Text style={{ marginTop: 10, marginBottom: 3, textAlign: "center" }}>
+          {info}
         </Text>
         <TouchableOpacity>
-          <Text style={{color: 'blue'}}>LEARN MORE</Text>
+          <Text style={{ color: 'blue' }}>LEARN MORE</Text>
         </TouchableOpacity>
       </View>
     </View>
