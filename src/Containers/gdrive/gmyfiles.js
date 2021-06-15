@@ -2,6 +2,8 @@ import * as React from 'react';
 import {  useWindowDimensions } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 
+import {darkMode} from './comps';
+
 import GComputer from './gcomputer';
 import GMyDrive from './gmydrive';
 
@@ -32,7 +34,7 @@ export default function TabViewExample() {
         //borderBottomColor:"silver"
       }}
       activeColor={"royalblue"}
-      inactiveColor={"black"}
+      inactiveColor={darkMode ? "silver" : "black"}
     />
   );
 

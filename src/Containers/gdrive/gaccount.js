@@ -17,7 +17,7 @@ import {
   FlatList,
 } from 'react-native';
 
-import {showToast} from './comps';
+import {showToast,ZText,darkMode} from './comps';
 
 const GAccounts = () => {
   const styles = StyleSheet.create({
@@ -30,7 +30,7 @@ const GAccounts = () => {
       marginVertical: 10,
       width: '100%',
       height: 1,
-      backgroundColor: 'black',
+      backgroundColor:darkMode ? 'silver':"black",
     },
   });
 
@@ -101,6 +101,7 @@ const AcCurrent = () => {
       backgroundColor: 'transparent',
       borderRadius: 8,
       borderWidth: 0.5,
+      borderColor: darkMode ? 'silver':"black",
     },
     img1: {
       height: 40,
@@ -115,7 +116,7 @@ const AcCurrent = () => {
         <View style={{flexDirection: 'row'}}>
           <Image style={styles.img1} source={{uri: img1}} />
           <View style={{marginLeft: 15}}>
-            <Text style={{color: 'black'}}>Ragu Main</Text>
+            <ZText>Ragu Main</ZText>
             <Text style={{marginTop: 5, fontSize: 12, color: 'grey'}}>
               ragu.main@gmail.com
             </Text>
@@ -128,7 +129,7 @@ const AcCurrent = () => {
       </View>
 
       <TouchableOpacity onPress={() => {}} style={styles.manage}>
-        <Text style={{color: 'black'}}>Manage your Google Account</Text>
+        <ZText>Manage your Google Account</ZText>
       </TouchableOpacity>
     </View>
   );
@@ -156,16 +157,16 @@ const AcOthers = () => {
 
       <View style={{marginVertical:5, flexDirection: 'row',alignItems:"center"}}>
         <Image style={styles.icon} source={{uri: addac}} />
-        <Text style={{marginLeft: 15, color: 'black'}}>
+        <ZText style={{marginLeft: 15}}>
           Add another account
-        </Text>
+        </ZText>
       </View>
 
       <View style={{marginVertical:5,flexDirection: 'row',alignItems:"center"}}>
         <Image style={styles.icon} source={{uri: manageac}} />
-        <Text style={{marginLeft: 15, color: 'black'}}>
+        <ZText style={{marginLeft: 15}}>
           Manage accounts on this device
-        </Text>
+        </ZText>
       </View>
 
     </View>
@@ -223,7 +224,7 @@ const AcItem = ({acnt}) => {
     <View style={styles.container}>
       <Image style={styles.img1} source={{uri: acnt.img}} />
       <View style={{marginLeft: 15}}>
-        <Text style={{color: 'black'}}>{acnt.name}</Text>
+        <ZText>{acnt.name}</ZText>
         <Text style={{marginTop: 0, fontSize: 12, color: 'grey'}}>
           {acnt.email}
         </Text>
@@ -245,11 +246,11 @@ const Privacy = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity>
-        <Text> Privacy Policy </Text>
+        <ZText> Privacy Policy </ZText>
       </TouchableOpacity>
-      <Text style={{marginHorizontal: 10}}> ☼ </Text>
+      <ZText style={{marginHorizontal: 10}}> ☼ </ZText>
       <TouchableOpacity>
-        <Text> Terms of Service </Text>
+        <ZText> Terms of Service </ZText>
       </TouchableOpacity>
     </View>
   );

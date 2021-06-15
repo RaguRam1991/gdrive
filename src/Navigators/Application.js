@@ -6,17 +6,23 @@ import { NavigationContainer } from '@react-navigation/native'
 import { navigationRef } from '@/Navigators/Root'
 import { SafeAreaView, StatusBar } from 'react-native'
 import { useTheme } from '@/Theme'
+import { Config } from '@/Config'
+import { getTheme } from '../Containers/gdrive/comps'
 
 const Stack = createStackNavigator()
 
 let MainNavigator
 
 // @refresh reset
-const ApplicationNavigator = () => {
+const ApplicationNavigator = () => { 
+
   const { Layout, darkMode, NavigationTheme } = useTheme()
+  Config.darkMode = darkMode
+  console.log('dark mode',darkMode);
+  getTheme()
   const { colors } = NavigationTheme
   const [isApplicationLoaded, setIsApplicationLoaded] = useState(false)
-  const applicationIsLoading = useSelector(state => state.startup.loading)
+  const applicationIsLoading = useSelector(state => state.startup.loading) 
 
   useEffect(() => {
     if (MainNavigator == null && !applicationIsLoading) {

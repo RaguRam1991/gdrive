@@ -1,7 +1,6 @@
 import React from 'react';
 import {
-  StyleSheet,
-  ToastAndroid, 
+  StyleSheet,   
   View, 
   Text,
   FlatList, 
@@ -9,11 +8,12 @@ import {
   TouchableOpacity,   
   Switch
 } from 'react-native';
-
 import { useDispatch, useSelector } from 'react-redux'
 
 import { useTheme } from '@/Theme'
 import ChangeTheme from '@/Store/Theme/ChangeTheme'
+
+import {darkMode,ZText,showToast} from './comps';
 
 const dispatch = useDispatch()
 
@@ -45,7 +45,7 @@ const GDrawer = () => {
       <Image style={styles.img} source={{ uri: img }} />
       <View style={styles.sep} />
       <Options />
-      {/* <DarkMode /> */}
+      <DarkMode />
     </View>
   );
 };
@@ -115,16 +115,12 @@ const OItem = ({ opt }) => {
       //justifyContent: 'space-between',
       flexDirection: 'row',
     },
-  });
-
-  const showToast = () => {
-    ToastAndroid.show("No Action written !", ToastAndroid.SHORT);
-  };
+  });  
 
   return (
-    <TouchableOpacity onPress={showToast} style={styles.container}>
+    <TouchableOpacity onPress={()=>showToast('No Action written !')} style={styles.container}>
       <Image style={{ height: 20, width: 20 }} source={{ uri: opt.icon }} />
-      <Text style={{ marginLeft: 15, color: 'black' }}>{opt.name}</Text>
+      <ZText style={{ marginLeft: 15 }}>{opt.name}</ZText>
     </TouchableOpacity>
   );
 };
@@ -152,7 +148,7 @@ const Storage = () => {
     <TouchableOpacity style={styles.container}>
       <Image style={{ height: 20, width: 20 }} source={{ uri: img }} />
       <View style={{ marginLeft: 15 }}>
-        <Text style={{ color: 'black' }}>Storage</Text>
+        <ZText>Storage</ZText>
         <Text style={{ color: 'grey' }}>{usage}</Text>
       </View>
     </TouchableOpacity>
@@ -161,7 +157,7 @@ const Storage = () => {
 
 const DarkMode = () => {
   const { Common, Fonts, Gutters, Layout } = useTheme()
-  const [isEnabled, setIsEnabled] = React.useState(false);
+  const [isEnabled, setIsEnabled] = React.useState(darkMode);
   
   const toggleSwitch = () => {
     setIsEnabled(previousState => !previousState);
@@ -185,7 +181,7 @@ const DarkMode = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={{ color: 'black' }}>DarkMode</Text>
+      <ZText>Dark Mode</ZText>
       <Switch
         trackColor={{ false: "#767577", true: "#81b0ff" }}
         thumbColor={isEnabled ? "royalblue" : "#f4f3f4"}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import {ZText} from './comps';
 
 const GComputer = () => {
   const styles = StyleSheet.create({
@@ -21,10 +22,10 @@ const GComputer = () => {
     <View style={styles.container}>
       <Image source={{ uri: imgsync }} style={styles.img} />
       <View style={{ alignItems: 'center', width: '80%' }}>
-        <Text style={{ fontSize: 18 }}>No Computers Syncing</Text>
-        <Text style={{ marginTop: 10, marginBottom: 3, textAlign: "center" }}>
+        <ZText style={{ fontSize: 18 }}>No Computers Syncing</ZText>
+        <ZText style={{ marginTop: 10, marginBottom: 3, textAlign: "center" }}>
           {info}
-        </Text>
+        </ZText>
         <TouchableOpacity>
           <Text style={{ color: 'blue' }}>LEARN MORE</Text>
         </TouchableOpacity>

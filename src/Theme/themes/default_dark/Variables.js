@@ -1,5 +1,5 @@
 const Colors = {
-  primary: 'lightblue',
+  primary: 'royalblue',
   text: 'white',
   inputBackground: 'gray',
 }

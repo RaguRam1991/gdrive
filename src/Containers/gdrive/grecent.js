@@ -10,7 +10,7 @@
  name,type,picture,last opened
  */
 
-import React from 'react';
+import React from 'react'
 import {
   StyleSheet,
   View,
@@ -18,17 +18,23 @@ import {
   TouchableOpacity,
   FlatList,
   Image,
-} from 'react-native';
+} from 'react-native'
 
-import icons from './icons';
-import GFOptions from './gfoptions';
+import icons from './icons'
+import GFOptions from './gfoptions'
 
-import {BottomSheet} from 'react-native-elements';
-import {rec_files} from './data';
-import {AddNew} from './comps';
+import { BottomSheet } from 'react-native-elements'
+import { rec_files } from './data'
+import { AddNew,ZText } from './comps'
+
+import { useTheme } from '@/Theme'
+var fonts2 = {}
 
 const GRecent = () => {
-  const [isVisible, setIsVisible] = React.useState(false);
+  const { Common, Fonts, Gutters, Layout } = useTheme()
+  fonts2 = Fonts
+
+  const [isVisible, setIsVisible] = React.useState(false)
 
   const styles = StyleSheet.create({
     container: {
@@ -41,32 +47,34 @@ const GRecent = () => {
       width: 50,
       height: 50,
     },
-  });
+  })
 
   const reed = async () => {
-    alert('this is home');
-  };
+    alert('this is home')
+  }
 
   const toggleBSheet = () => {
-    setIsVisible(!isVisible);
-  };
+    setIsVisible(!isVisible)
+  }
 
   return (
     <View style={styles.container}>
+      {/* <ZText style={{color:"yellow"}}>Good</ZText> */}
       <FList toggleBSheet={toggleBSheet} />
-      <AddNew/>
+      <AddNew />
       <BottomSheet
         isVisible={isVisible}
         containerStyle={{
           backgroundColor: 'silver' /*'rgba(0.5, 0.25, 0, 0.5)'*/,
-        }}>
+        }}
+      >
         <GFOptions onClose={toggleBSheet} />
       </BottomSheet>
     </View>
-  );
-};
+  )
+}
 
-export default GRecent;
+export default GRecent
 
 /*  
  icon,name,option
@@ -74,8 +82,7 @@ export default GRecent;
  last opened
  */
 
- 
-const FItem = ({fyle, toggleBSheet}) => {
+const FItem = ({ fyle, toggleBSheet }) => {
   const styles = StyleSheet.create({
     container: {
       marginVertical: 10,
@@ -108,19 +115,21 @@ const FItem = ({fyle, toggleBSheet}) => {
       borderTopLeftRadius: 5,
       borderTopRightRadius: 5,
     },
-  });
+  })
 
   return (
     <View style={styles.container}>
       <View style={styles.filename}>
-        <View style={{flexDirection: 'row'}}>
-          <Image style={styles.ficon} source={{uri: icons[fyle.ftype]}} />
-          <Text style={{marginLeft: 10, color: 'black'}}>{fyle.fname}</Text>
+        <View style={{ flexDirection: 'row' }}>
+          <Image style={styles.ficon} source={{ uri: icons[fyle.ftype] }} />
+          <Text style={[{ marginLeft: 10 }, fonts2.textSmall]}>
+            {fyle.fname}
+          </Text>
         </View>
         <View>
           <TouchableOpacity onPress={toggleBSheet}>
             <Image
-              style={{height: 15, width: 15}}
+              style={{ height: 15, width: 15 }}
               source={require('./more-icon.png')}
             />
           </TouchableOpacity>
@@ -128,17 +137,17 @@ const FItem = ({fyle, toggleBSheet}) => {
       </View>
 
       <View style={styles.prevu}>
-        <Image style={styles.prevuimg} source={{uri: fyle.prevu}} />
+        <Image style={styles.prevuimg} source={{ uri: fyle.prevu }} />
       </View>
 
       <View>
-        <Text style={{color: 'grey'}}>Last opened in {fyle.lasto}</Text>
+        <Text style={{ color: 'grey' }}>Last opened in {fyle.lasto}</Text>
       </View>
     </View>
-  );
-};
+  )
+}
 
-const FList = ({toggleBSheet}) => {
+const FList = ({ toggleBSheet }) => {
   const styles = StyleSheet.create({
     container: {
       //alignItems: 'center',
@@ -151,15 +160,15 @@ const FList = ({toggleBSheet}) => {
       backgroundColor: 'silver',
       borderRadius: 0.5,
     },
-  });
+  })
 
   const seperator = () => {
-    return <View style={styles.sep} />;
-  };
+    return <View style={styles.sep} />
+  }
 
-  const renderItem = ({item}) => {
-    return <FItem toggleBSheet={toggleBSheet} fyle={item} />;
-  };
+  const renderItem = ({ item }) => {
+    return <FItem toggleBSheet={toggleBSheet} fyle={item} />
+  }
 
   return (
     <FlatList
@@ -168,5 +177,5 @@ const FList = ({toggleBSheet}) => {
       ItemSeparatorComponent={seperator}
       keyExtractor={(item, index) => '' + index}
     />
-  );
-};
+  )
+}

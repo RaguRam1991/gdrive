@@ -6,6 +6,8 @@ import { useTheme } from '@/Theme'
 import InitStartup from '@/Store/Startup/Init'
 import { Brand } from '@/Components'
 
+import {ZText} from '../gdrive/comps';
+
 const IndexStartupContainer = () => {
   const { Layout, Gutters, Fonts } = useTheme()
 
@@ -21,7 +23,7 @@ const IndexStartupContainer = () => {
     <View style={[Layout.fill, Layout.colCenter]}>
       <Brand />
       <ActivityIndicator size={'large'} style={[Gutters.largeVMargin]} />
-      <Text style={Fonts.textCenter}>{t('welcome')}</Text>
+      <ZText style={Fonts.textCenter}>{t('welcome')}</ZText>
     </View>
   )
 }
