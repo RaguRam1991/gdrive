@@ -20,19 +20,23 @@ import {
   Image,
 } from 'react-native'
 
+import Ionicons from 'react-native-vector-icons/Ionicons'
+
 import icons from './icons'
 import GFOptions from './gfoptions'
 
 import { BottomSheet } from 'react-native-elements'
 import { rec_files } from './data'
-import { AddNew,ZText } from './comps'
+import { AddNew, ZText, ZIcon } from './comps'
 
 import { useTheme } from '@/Theme'
 var fonts2 = {}
+var Common2 = null
 
 const GRecent = () => {
   const { Common, Fonts, Gutters, Layout } = useTheme()
   fonts2 = Fonts
+  Common2 = Common
 
   const [isVisible, setIsVisible] = React.useState(false)
 
@@ -122,16 +126,20 @@ const FItem = ({ fyle, toggleBSheet }) => {
       <View style={styles.filename}>
         <View style={{ flexDirection: 'row' }}>
           <Image style={styles.ficon} source={{ uri: icons[fyle.ftype] }} />
-          <Text style={[{ marginLeft: 10 }, fonts2.textSmall]}>
-            {fyle.fname}
-          </Text>
+          <ZText style={{ marginLeft: 10 }}>{fyle.fname}</ZText>
         </View>
         <View>
           <TouchableOpacity onPress={toggleBSheet}>
-            <Image
+            {/* <Image
               style={{ height: 15, width: 15 }}
               source={require('./more-icon.png')}
-            />
+            /> */}
+            {/* <Ionicons
+              name={'ellipsis-vertical-outline'}
+              size={20}
+              color={Common2.icon.color}
+            /> */}
+            <ZIcon name={'ellipsis-vertical-outline'} />
           </TouchableOpacity>
         </View>
       </View>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
-import {ZText} from './comps';
+import {ZText,ZIcon} from './comps';
 
 const GComputer = () => {
   const styles = StyleSheet.create({
@@ -20,7 +20,9 @@ const GComputer = () => {
 
   return (
     <View style={styles.container}>
-      <Image source={{ uri: imgsync }} style={styles.img} />
+      {/* <Image source={{ uri: imgsync }} style={styles.img} /> */}
+      <ZIcon name={'sync-circle-outline'} size={200} />
+
       <View style={{ alignItems: 'center', width: '80%' }}>
         <ZText style={{ fontSize: 18 }}>No Computers Syncing</ZText>
         <ZText style={{ marginTop: 10, marginBottom: 3, textAlign: "center" }}>

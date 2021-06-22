@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import {
   StyleSheet,
@@ -8,18 +8,20 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
-} from 'react-native';
+} from 'react-native'
 
-import icons from './icons';
+import icons from './icons'
+
+import { ZIcon } from './comps'
 
 const fname = {
   name: 'My File Name',
   icon: icons.xlsx,
-};
+}
 
 const GFOptions = ({ onClose }) => {
   const img =
-    'https://logodownload.org/wp-content/uploads/2020/04/google-drive-logo-2-1.png';
+    'https://logodownload.org/wp-content/uploads/2020/04/google-drive-logo-2-1.png'
 
   const styles = StyleSheet.create({
     container: {
@@ -38,7 +40,7 @@ const GFOptions = ({ onClose }) => {
       marginVertical: 10,
       height: 30,
     },
-  });
+  })
 
   return (
     <View style={styles.container}>
@@ -47,81 +49,88 @@ const GFOptions = ({ onClose }) => {
       <Options />
       <View style={{ height: 10 }} />
     </View>
-  );
-};
+  )
+}
 
-export default GFOptions;
+export default GFOptions
 
 const options_data = [
   {
     name: 'Share',
-    icon:
-      'https://static.thenounproject.com/png/771244-200.png',
+    icon2: 'share-social-outline',
+    icon: 'https://static.thenounproject.com/png/771244-200.png',
   },
   {
     name: 'Add to Starred',
-    icon:
-      'https://cdn3.iconfinder.com/data/icons/sympletts-free-sampler/128/star-512.png',
+    icon2: 'star-outline',
+    icon: 'https://cdn3.iconfinder.com/data/icons/sympletts-free-sampler/128/star-512.png',
   },
   {
     name: 'Make available offline',
-    icon:
-      'https://static.thenounproject.com/png/2263783-200.png',
+    icon2:"cloud-offline-outline",
+    icon: 'https://static.thenounproject.com/png/2263783-200.png',
   },
   {
     name: 'Link sharing on',
+    icon2:"link-outline",
     icon: 'https://www.materialui.co/materialIcons/editor/insert_link_grey_192x192.png',
   },
   {
     name: 'Copy link',
-    icon:
-      'https://image.flaticon.com/icons/png/512/88/88026.png',
+    icon2:"copy-outline",
+    icon: 'https://image.flaticon.com/icons/png/512/88/88026.png',
   },
   {
     name: 'Make a copy',
+    icon2:"file-tray-outline",
     icon: 'https://static.thenounproject.com/png/3319514-200.png',
   },
   {
     name: 'Send a copy',
+    icon2:"arrow-redo-outline",
     icon: 'https://www.searchpng.com/wp-content/uploads/2019/02/Forward-Icon-PNG-715x715.png',
   },
   {
     name: 'Open with',
-    icon:
-      'https://static.thenounproject.com/png/50342-200.png',
+    icon2:"move-outline",
+    icon: 'https://static.thenounproject.com/png/50342-200.png',
   },
   {
     name: 'Download',
-    icon:
-      'http://cdn.onlinewebfonts.com/svg/img_71049.png',
+    icon2:"download-outline",
+    icon: 'http://cdn.onlinewebfonts.com/svg/img_71049.png',
   },
   {
     name: 'Rename',
-    icon:
-      'https://static.thenounproject.com/png/3053734-200.png',
+    icon2:"create-outline",
+    icon: 'https://static.thenounproject.com/png/3053734-200.png',
   },
   {
     name: 'Show file location',
+    icon2:"folder-outline",
     icon: 'https://img.icons8.com/ios/452/opened-folder.png',
   },
   {
     name: 'Details & Activity',
-    icon:
-      'https://img.icons8.com/pastel-glyph/2x/info.png',
+    icon2:"information-circle-outline",
+    icon: 'https://img.icons8.com/pastel-glyph/2x/info.png',
   },
   {
     name: 'Print',
+    icon2:"print-outline",
     icon: 'https://freeiconshop.com/wp-content/uploads/edd/print-outline.png',
   },
   {
     name: 'Add to Home screen',
+    icon2:"home-outline",
     icon: 'http://simpleicon.com/wp-content/uploads/mobile-1.png',
   },
   {
     name: 'Report abuse',
+    icon2:"alert-circle-outline",
     icon: 'https://cdn2.iconfinder.com/data/icons/flaticons-stroke/16/exclamation-point-1-512.png',
   },
-];
+]
 
 const Options = () => {
   const styles = StyleSheet.create({
@@ -136,7 +145,7 @@ const Options = () => {
       backgroundColor: 'silver',
       borderRadius: 0.5,
     },
-  });
+  })
 
   const renderItem = ({ item, index }) => {
     if ((index + 1) % 3 == 0) {
@@ -145,10 +154,10 @@ const Options = () => {
           <OItem opt={item} />
           <Separator />
         </>
-      );
+      )
     }
-    return <OItem opt={item} />;
-  };
+    return <OItem opt={item} />
+  }
 
   return (
     <SafeAreaView style={{ flex: 1, paddingLeft: 10 }}>
@@ -160,8 +169,8 @@ const Options = () => {
         keyExtractor={(item, index) => '' + index}
       />
     </SafeAreaView>
-  );
-};
+  )
+}
 
 const OItem = ({ opt }) => {
   const styles = StyleSheet.create({
@@ -173,15 +182,19 @@ const OItem = ({ opt }) => {
       //justifyContent: 'space-between',
       flexDirection: 'row',
     },
-  });
+  })
 
   return (
     <TouchableOpacity style={styles.container}>
-      <Image style={{ height: 20, width: 20 }} source={{ uri: opt.icon }} />
+      {opt.icon2 ? (
+        <ZIcon color={"black"} name={opt.icon2} />
+      ) : (
+        <Image style={{ height: 20, width: 20 }} source={{ uri: opt.icon }} />
+      )}
       <Text style={{ marginLeft: 15, color: 'black' }}>{opt.name}</Text>
     </TouchableOpacity>
-  );
-};
+  )
+}
 
 const FName = ({ opt, onClose }) => {
   const styles = StyleSheet.create({
@@ -194,7 +207,7 @@ const FName = ({ opt, onClose }) => {
       //justifyContent: 'space-between',
       flexDirection: 'row',
     },
-  });
+  })
 
   return (
     <View style={styles.container}>
@@ -205,18 +218,20 @@ const FName = ({ opt, onClose }) => {
           fontSize: 16,
           marginLeft: 20,
           color: 'black',
-        }}>
+        }}
+      >
         {opt.name}
       </Text>
       <View style={{ flex: 1 }} />
       <TouchableOpacity
         onPress={onClose}
-        style={{ padding: 10, marginRight: 10 }}>
+        style={{ padding: 10, marginRight: 10 }}
+      >
         <Text> X </Text>
       </TouchableOpacity>
     </View>
-  );
-};
+  )
+}
 
 const Separator = () => {
   return (
@@ -231,5 +246,5 @@ const Separator = () => {
         borderRadius: 0.5,
       }}
     />
-  );
-};
+  )
+}

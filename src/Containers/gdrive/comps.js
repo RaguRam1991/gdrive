@@ -17,18 +17,25 @@ import icons from './icons'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 var Common, Fonts, Gutters, Layout
 
-export const darkMode=Config.darkMode;
+export const darkMode = Config.darkMode
 
 export function getTheme() {
   Fonts = useTheme()['Fonts']
-  console.log('getTheme')
+  Common = useTheme()['Common']
+  //console.log('getTheme')
 }
 
 export const ZText = props => {
+  return <Text style={[useTheme()['Fonts'].textSmall, props.style]}>{props.children}</Text>
+}
+
+export const ZIcon = props => {
   return (
-    <Text style={[Fonts.textSmall, props.style]}>
-      {props.children}
-    </Text>
+    <Ionicons
+      name={props.name}
+      size={props.size || 20}
+      color={props.color || useTheme()['Common'].icon.color}
+    />
   )
 }
 
@@ -58,18 +65,19 @@ export const FItem = ({ fyle, toggleBSheet }) => {
           source={{ uri: icons[fyle.ftype] || icons.file }}
         />
         <View style={{ marginLeft: 15 }}>
-          <Text style={Fonts.textSmall}>{fyle.fname}</Text>
-          <Text style={{ marginTop: 5, fontSize: 12, color: 'grey' }}>
+          <ZText style={{}}>{fyle.fname}</ZText>
+          <ZText style={{ marginTop: 5, fontSize: 12, color: 'grey' }}>
             Modified {fyle.modi}
-          </Text>
+          </ZText>
         </View>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={toggleBSheet}>
-        <Image
+        {/* <Image
           style={{ marginHorizontal: 5, height: 15, width: 15 }}
           source={require('./more-icon.png')}
-        />
+        /> */}
+        <ZIcon name={'ellipsis-vertical-outline'}/>
       </TouchableOpacity>
     </View>
   )
@@ -105,14 +113,14 @@ export const FItem2 = ({ fyle, toggleBSheet }) => {
           source={{ uri: icons[fyle.ftype] }}
         />
         <View style={{ marginLeft: 15 }}>
-          <Text style={Fonts.textSmall}>{fyle.fname}</Text>
+          <ZText style={Fonts.textSmall}>{fyle.fname}</ZText>
           <View
             style={{ marginTop: 5, alignItems: 'center', flexDirection: 'row' }}
           >
             <Ionicons name={'people'} size={15} color={'grey'} />
-            <Text style={{ marginLeft: 5, fontSize: 12, color: 'grey' }}>
+            <ZText style={{ marginLeft: 5, fontSize: 12, color: 'grey' }}>
               Shared {fyle.modi}
-            </Text>
+            </ZText>
           </View>
         </View>
       </TouchableOpacity>
@@ -278,12 +286,12 @@ export const ViewType = () => {
       justifyContent: 'space-between',
       padding: 10,
     },
-  })  
+  })
 
   return (
     <View style={styles.container}>
       <ZText> Name ↑ </ZText>
-      <TouchableOpacity onPress={()=>showToast('No Action written !')}>
+      <TouchableOpacity onPress={() => showToast('No Action written !')}>
         <Image
           style={{ height: 30, width: 30 }}
           source={{
@@ -300,8 +308,14 @@ export function showToast(msg = '') {
 }
 
 export const FList = props => {
+  console.log(props.data)
+
   const styles = StyleSheet.create({
-    container: {},
+    container: {
+      /* flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center', */
+    },
     sep: {
       alignSelf: 'center',
       height: 1,

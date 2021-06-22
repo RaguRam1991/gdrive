@@ -122,7 +122,7 @@ const SearchBar1 = props => {
   const icon_menu =
     'https://pics.freeicons.io/uploads/icons/png/15211315791553239378-512.png'
   const icon_profile =
-    'https://www.seekpng.com/png/detail/115-1150053_avatar-png-transparent-png-royalty-free-default-user.png'
+    'https://almousaadvocates.ae/wp-content/uploads/2020/07/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png'
 
   const [search, setSearch] = React.useState('')
 
@@ -153,18 +153,26 @@ const SearchBar1 = props => {
   return (
     <View style={styles.bar}>
       <TouchableOpacity onPress={props.onMenuPress}>
-        <Image source={{ uri: icon_menu }} style={styles.img} />
+        {/* <Image source={{ uri: icon_menu }} style={styles.img} /> */}
+        <Ionicons 
+        name={'menu-outline'} 
+        size={20} 
+        color={'grey'}/>
       </TouchableOpacity>
 
       <TouchableOpacity
         onPress={props.onSearchPress}
         style={{ flex: 1, marginLeft: 10 }}
       >
-        <ZText style={{color:"snow"}}>Search in Drive</ZText>
+        <ZText style={{}}>Search in Drive</ZText>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={props.onAcPress}>
-        <Image source={{ uri: icon_profile }} style={styles.img} />
+        {/* <Image source={{ uri: icon_profile }} style={styles.img} /> */}
+        <Ionicons 
+        name={'person-circle-outline'} 
+        size={25} 
+        color={'blue'}/>
       </TouchableOpacity>
     </View>
   )

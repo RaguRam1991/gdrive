@@ -30,6 +30,9 @@ export default function ({ Colors, ...args }) {
         marginTop: 10,
         marginBottom: 10,
       },
+      icon: {
+        color: Colors.text,
+      },
     }),
   }
 }
